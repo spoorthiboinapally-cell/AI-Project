@@ -1,0 +1,197 @@
+# ---------------------------------------------------------
+# SMART WASTE SEGREGATION BIN (EXPANDED VERSION)
+# 430+ Waste Items | Pure Python | No GUI | No Libraries
+# ---------------------------------------------------------
+
+def segregate_waste(waste_item):
+    """Classify waste item into the correct bin."""
+
+    # ------------------------------ #
+    #         RECYCLABLE ITEMS       #
+    # ------------------------------ #
+    recyclable = [
+        'plastic bottle', 'paper', 'glass', 'metal can', 'cardboard', 'newspaper', 'magazine',
+        'milk carton', 'tin can', 'steel can', 'aluminum foil', 'plastic container', 'soda can',
+        'water bottle', 'plastic jar', 'wine bottle', 'jam jar', 'glass cup', 'cardboard box',
+        'office paper', 'brochure', 'book', 'notebook', 'paper bag', 'tissue box', 'egg carton',
+        'shoe box', 'poster', 'calendar', 'foil tray', 'juice box', 'printer paper', 'cereal box',
+        'glass bottle', 'beer bottle', 'glass plate', 'glass jar', 'metal lid', 'plastic lid',
+        'plastic cup', 'plastic tray', 'plastic tub', 'plastic bucket', 'plastic hanger',
+        'plastic crate', 'catalog', 'envelope', 'glass bowl', 'glass container', 'aluminum can',
+        'steel lid', 'corrugated box', 'tinfoil', 'scrap metal', 'metal spoon', 'metal fork',
+        'plastic spoon', 'plastic fork', 'milk bottle', 'juice bottle', 'soda bottle', 'glass ornament',
+        'glass tile', 'brochure paper', 'writing paper', 'boxboard', 'poster board', 'gift bag',
+        'gift box', 'wrapping paper', 'paper tube', 'clean pizza box', 'file folder', 'manila folder',
+        'newspaper bundle', 'magazine cover', 'paper craft', 'cardboard sheet', 'clean egg carton',
+        'cereal packet', 'cookie box', 'hard plastic', 'compostable plastic cup',
+        'compostable plastic container', 'plastic pipes (clean)', 'plastic sheets (clean)',
+        'soft drink bottle', 'hangers', 'metal tray', 'iron pieces', 'steel scraps', 'tin lid',
+        'aluminum tray', 'glass decor', 'empty jar', 'yogurt container', 'ice cream tub',
+        'smoothie bottle', 'milkshake bottle', 'detergent bottle', 'shampoo bottle (clean)',
+        'conditioner bottle (clean)', 'body wash bottle', 'hand wash bottle', 'sauce bottle',
+        'ketchup bottle', 'mayonnaise jar (clean)', 'pickle jar (clean)', 'spice jar', 'coffee jar',
+        'metal canister', 'steel bowl', 'biscuit tin', 'cookie tin', 'cosmetic container (clean)',
+        'perfume bottle (empty)', 'glass vial (clean)', 'glass test tube (clean)', 'small drinking glass',
+        'glass candle holder', 'paper rolls', 'art paper', 'origami paper', 'index card', 'recipe book',
+        'spiral notebook (without metal)', 'gift wrap (non-metallic)'
+    ]
+
+    # ------------------------------ #
+    #       BIODEGRADABLE ITEMS      #
+    # ------------------------------ #
+    biodegradable = [
+        'food waste', 'banana peel', 'leaves', 'vegetable', 'fruit', 'apple core', 'orange peel',
+        'tea bag', 'coffee grounds', 'egg shell', 'bread', 'rice', 'pasta', 'salad', 'flowers',
+        'plant clippings', 'grass', 'wood shavings', 'cotton cloth', 'paper towel', 'napkin',
+        'sawdust', 'peanut shell', 'nut shell', 'corn husk', 'paper plate (used)', 'tissue',
+        'vegetable scrap', 'onion peel', 'tomato', 'potato peel', 'bread crust', 'apple peel',
+        'banana', 'orange', 'lemon peel', 'cucumber scrap', 'spinach leaves', 'wilted flowers',
+        'leftover food', 'cooked vegetables', 'tea leaves', 'coffee filter', 'coconut husk',
+        'coconut shell', 'dry leaves', 'wet tissue', 'flower petals', 'grass clipping', 'tree bark',
+        'mango peel', 'pineapple peel', 'banana leaf', 'rice grain', 'food crumbs', 'cabbage scrap',
+        'carrot peel', 'pumpkin skin', 'bean pod', 'papaya peel', 'leftover fruit',
+        'leftover salad', 'garlic peel', 'ginger peel', 'fish bones', 'chicken bones', 'egg membrane',
+        'tea powder', 'spoiled fruit', 'spoiled vegetables', 'lettuce leaf', 'celery scrap',
+        'spinach scrap', 'bread ends', 'vegetable skin', 'fruit skin', 'squash peel', 'zucchini peel',
+        'herb stems', 'mint leaves', 'basil leaves', 'rotten apple', 'rotten banana', 'rotten mango',
+        'sugarcane bagasse', 'plant stem', 'plant roots', 'palm leaves', 'bamboo leaf', 'bamboo scrap',
+        'coconut fiber', 'groundnut shell', 'seed shell', 'wheat grains', 'corn cob', 'broken nut',
+        'broken biscuit', 'carrot top', 'radish leaves', 'spinach bunch', 'pumpkin scrap',
+        'bread crumbs', 'broken chapati', 'spoiled bread', 'spoiled rice', 'cooked pasta',
+        'spoiled milk (in soil)', 'curd waste', 'tea dust', 'cereal waste', 'oatmeal waste',
+        'porridge waste', 'flower stem', 'rose petals', 'marigold petals', 'lotus stem',
+        'natural sponge', 'corn flakes waste', 'cooking leftovers', 'kitchen waste'
+    ]
+
+    # ------------------------------ #
+    #     NON-BIODEGRADABLE ITEMS    #
+    # ------------------------------ #
+    non_biodegradable = [
+        'styrofoam', 'plastic bag', 'battery', 'diaper', 'rubber', 'paint can', 'toothbrush',
+        'toothpaste tube', 'shampoo bottle', 'plastic straw', 'pen', 'marker', 'ink cartridge',
+        'cd', 'dvd', 'light bulb', 'chip bag', 'snack wrapper', 'candy wrapper', 'razor', 'mask',
+        'plastic tape', 'medical waste', 'syringe', 'plastic wrapper', 'adhesive tape', 'foam cup',
+        'plastic rope', 'pvc pipe', 'sanitary pad', 'phone battery', 'toy', 'charger', 'earphones',
+        'usb cable', 'mobile phone', 'rubber glove', 'plastic glove', 'plastic film',
+        'plastic packaging', 'snack packet', 'foil packet', 'chewing gum', 'wire', 'electric wire',
+        'led bulb', 'cigarette butt', 'lighter', 'balloon', 'synthetic cloth', 'nylon rope',
+        'nylon bag', 'bubble wrap', 'ziplock bag', 'plastic pouch', 'medicine wrapper',
+        'capsule packet', 'blister pack', 'paint brush synthetic', 'plastic fork', 'plastic knife',
+        'plastic toy', 'remote control', 'computer mouse', 'keyboard', 'usb stick', 'phone case',
+        'screen protector', 'tape roll', 'plastic bottle cap', 'plastic filter', 'synthetic sponge',
+        'rubber tube', 'electric plug', 'electric board', 'earbud stick', 'glue tube', 'fevicol tube',
+        'adhesive bottle', 'plastic foam', 'plastic mesh', 'broken charger', 'broken remote',
+        'thermocol', 'packing foam', 'cigarette box', 'cigarette packet', 'ink pen body',
+        'gel pen body', 'electric fuse', 'led strip', 'synthetic belt', 'nylon cloth', 'carpet fiber',
+        'synthetic carpet', 'shampoo sachet', 'soap wrapper', 'oil packet', 'milk plastic packet',
+        'chocolate wrapper', 'biscuit wrapper', 'mask wrapper', 'sanitary wrapper',
+        'diaper plastic strip', 'plastic tubing', 'plastic shovel', 'plastic tongs',
+        'gaming controller'
+    ]
+
+    waste_item = waste_item.lower().strip()
+
+    if any(w in waste_item for w in recyclable):
+        return "Recyclable Bin 🟦"
+    elif any(w in waste_item for w in biodegradable):
+        return "Biodegradable Bin 🟩"
+    elif any(w in waste_item for w in non_biodegradable):
+        return "Non-Biodegradable Bin 🟥"
+    else:
+        return "Unknown"
+
+
+# ---------------------------------------------------------
+# MAIN PROGRAM
+# ---------------------------------------------------------
+
+print("♻️ SMART WASTE SEGREGATION BIN ♻️")
+print("Bins: Recyclable 🟦 | Biodegradable 🟩 | Non-Biodegradable 🟥\n")
+print("Type 'status' to view bin levels, 'empty' to clear bins, or 'exit' to stop.\n")
+
+bins = {
+    "Recyclable Bin 🟦": {"count": 0, "capacity": 10},
+    "Biodegradable Bin 🟩": {"count": 0, "capacity": 10},
+    "Non-Biodegradable Bin 🟥": {"count": 0, "capacity": 10},
+}
+
+def progress_bar(current, total, length=20):
+    filled = int(length * current / total)
+    bar = '█' * filled + '-' * (length - filled)
+    percent = (current / total) * 100
+    return f"[{bar}] {percent:.0f}%"
+
+
+def show_status():
+    print("\n📊 BIN STATUS:")
+    for name, data in bins.items():
+        bar = progress_bar(data['count'], data['capacity'])
+        status = "✅ OK" if data["count"] < data["capacity"] else "❌ FULL"
+        print(f"{name}: {data['count']}/{data['capacity']} {bar} {status}")
+    print()
+
+
+def empty_bins():
+    for b in bins.values():
+        b["count"] = 0
+    print("\n🧹 All bins emptied successfully!\n")
+
+
+# ---------------------------------------------------------
+# MAIN LOOP (NOW SUPPORTS MULTIPLE ITEMS!)
+# ---------------------------------------------------------
+
+while True:
+    item = input("Enter waste item (or 'status', 'empty', 'exit'): ").strip()
+
+    if item.lower() == 'exit':
+        print("Segregation system shutting down. Goodbye! 👋")
+        break
+
+    elif item.lower() == 'status':
+        show_status()
+        continue
+
+    elif item.lower() == 'empty':
+        empty_bins()
+        continue
+
+    # ⭐ Detect quantity
+    parts = item.split()
+    qty = 1
+
+    if parts[0].isdigit():
+        qty = int(parts[0])
+        item_name = " ".join(parts[1:])
+    else:
+        item_name = item
+
+    result = segregate_waste(item_name)
+
+    # Unknown item message
+    if result == "Unknown":
+        print(f"🙂 '{item_name}' is not on the list for now. Please wait — we will try to add it within 24 hours.\n")
+        continue
+
+    available_space = bins[result]["capacity"] - bins[result]["count"]
+
+    if available_space <= 0:
+        print(f"🚫 {result} is FULL! Please empty it before adding more.\n")
+        continue
+
+    # ⭐ If user tries to add more than available
+    if qty > available_space:
+        bins[result]["count"] += available_space
+        print(f"⚠️ Only {available_space} of {qty} '{item_name}' added. {result} is now FULL!\n")
+        continue
+
+    # Normal add
+    bins[result]["count"] += qty
+    print(f"✅ Added {qty} '{item_name}' → {result}")
+
+    if bins[result]["count"] == bins[result]["capacity"]:
+        print(f"⚠️ {result} is now FULL!\n")
+    else:
+        remaining = bins[result]['capacity'] - bins[result]['count']
+        print(f"🪣 Current load: {bins[result]['count']}/{bins[result]['capacity']} ({remaining} spaces left)\n")
+
